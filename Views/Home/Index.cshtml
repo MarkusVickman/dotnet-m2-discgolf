@@ -1,6 +1,22 @@
+@model IEnumerable<discgolf.Models.DgCourses>
 @{
     ViewData["Title"] = "Startsidan";
 }
 
 <h1>Startsidan</h1>
 <p>Detta är lite </p>
+
+<div>
+
+        @foreach (var dgcourse in Model)
+        {
+            <div id="@dgcourse.Id">
+            <h2>@dgcourse.CourseName</h2>
+            <ul>@foreach (var basket in dgcourse.Basket) {
+                <li>@basket</li>
+                }
+                </ul>
+            </div>
+        }
+
+</div>
