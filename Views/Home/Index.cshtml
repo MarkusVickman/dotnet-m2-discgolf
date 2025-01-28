@@ -8,15 +8,27 @@
 
 <div>
 
-        @foreach (var dgcourse in Model)
-        {
-            <div id="@dgcourse.Id">
+    @foreach (var dgcourse in Model)
+    {
+        <div id="@dgcourse.Id" class="course-div">
+
+
             <h2>@dgcourse.CourseName</h2>
-            <ul>@foreach (var basket in dgcourse.Basket) {
-                <li>@basket</li>
+
+            <div class="flex">
+                <p class="basket">Hål</p> @for (var i = 1; i <= dgcourse.Basket.Length; i++)
+                {
+                    <p class="basket">@i</p>
                 }
-                </ul>
             </div>
-        }
+            <div class="flex">
+                <p class="basket">Par @for (var i = 1; i <= dgcourse.Basket.Length; i++)
+                    {
+                    <p class="basket">@dgcourse.Basket[i - 1]</p>
+                    }
+            </div>
+            
+        </div>
+    }
 
 </div>

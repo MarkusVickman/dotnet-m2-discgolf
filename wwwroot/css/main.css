@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+.course-div {
+width: 1000px;
+height: auto;
+background-color: cadetblue;
+margin: auto;
+margin-top: 20px;
+max-width: 100%;
+}
+
+.flex{
+border-width: 1px;
+border-style: solid;
+display: flex;
+}
+
+.basket {
+margin: 5px;
+width: 100%;
+}
+
+.course-div h2 {
+    background-color: grey;
+    padding: 15px;
+    margin: 0;
+}
+
+.display-none {
+    display: none;
+}
