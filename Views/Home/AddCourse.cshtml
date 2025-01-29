@@ -16,8 +16,14 @@
         {
             int j = i + 1;
             <input asp-for="Basket[i]" placeholder="Par för hål @j" />
-        }
+        }        
+        <input type="submit" value="Lägg till bana" class="submit-button">
 
-        <input type="submit" value="Lägg till bana" class="submit-button">        
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="error-message">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
     </form>
 </div>

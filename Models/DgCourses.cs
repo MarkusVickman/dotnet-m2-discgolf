@@ -6,7 +6,7 @@ namespace discgolf.Models
         //Egenskaper
 
         [Display(Name = "ID")]
-        public required int Id { get; set; }
+        public int? Id { get; set; }
         
         [Display(Name = "Banans namn")]
         public required String CourseName { get; set; }

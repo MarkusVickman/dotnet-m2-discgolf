@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using discgolf.Models;
 
+
 namespace discgolf.Controllers
 {
     public class HomeController : Controller
@@ -14,15 +15,39 @@ namespace discgolf.Controllers
             return View(JsonObj);
         }
 
-        /* public IActionResult AddCourse()
-         {
-             int numberOfBaskets = TempData["NumberOfBaskets"] != null ? Convert.ToInt32(TempData["NumberOfBaskets"]) : 0;
+        [Route("/AddCourse")]
+        public IActionResult AddCourse()
+        {
+            int numberOfBaskets = TempData["NumberOfBaskets"] != null ? Convert.ToInt32(TempData["NumberOfBaskets"]) : 0;
 
-             // Skicka numberOfBaskets till vyn
-             ViewBag.NumberOfBaskets = numberOfBaskets;
+            // Skicka numberOfBaskets till vyn
+            ViewBag.NumberOfBaskets = numberOfBaskets;
 
-             return View();
-         }*/
+            return View();
+        }
+
+        [HttpPost]
+        [Route("/AddCourse")]
+        public IActionResult AddCourse(DgCourses model)
+        {
+            //Validera
+            if (ModelState.IsValid)
+            {
+                string jsonStr = JsonConvert.SerializeObject(model);
+                TempData["new-course"] = jsonStr;
+
+
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Valideringen misslyckades. Kontrollera dina inmatningar.";
+                return View();
+
+            }
+
+        }
 
         public IActionResult Play()
         {
@@ -36,25 +61,23 @@ namespace discgolf.Controllers
             return View();
         }
 
-        [Route("/AddCourse")]
+
         [HttpPost]
-        public IActionResult AddCourse(int numberOf)
+        public IActionResult Index(int numberOf)
         {
-            ViewData["NumberOfBaskets"] = numberOf;
+            TempData["NumberOfBaskets"] = numberOf;
             // Hanterar klick
 
-            int numberOfBaskets = ViewData["NumberOfBaskets"] != null ? Convert.ToInt32(ViewData["NumberOfBaskets"]) : 0;
+            int numberOfBaskets = TempData["NumberOfBaskets"] != null ? Convert.ToInt32(TempData["NumberOfBaskets"]) : 0;
 
             if (numberOfBaskets <= 0)
             {
                 TempData["ErrorMessage"] = "Antalet korgar måste vara större än 0.";
-                return RedirectToAction("Index");
+                return View();
 
             }
-            // Skicka numberOfBaskets till vyn
-            ViewBag.NumberOfBaskets = numberOfBaskets;
 
-            return View();
+            return RedirectToAction("AddCourse");
         }
 
     }

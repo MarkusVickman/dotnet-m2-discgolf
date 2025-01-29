@@ -6,19 +6,19 @@
 <h1>Startsidan</h1>
 <p>Detta är lite </p>
 <div class="form">
-    @using (Html.BeginForm("Index", "AddCourse", FormMethod.Post))
-    {
+    <form method="post">
         <h2>Lägg till bana</h2>
         <label for="numberOf">Antal korgar på banan</label>
         <input type="number" id="numberOf" name="numberOf">
         <button type="submit" value="submit" class="submit-button">Skapa mall</button>
-    }
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <div class="error-message">
-            @TempData["ErrorMessage"]
-        </div>
-    }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="error-message">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+    </form>
 </div>
 
 <div>
