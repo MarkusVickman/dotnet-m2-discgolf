@@ -5,19 +5,27 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="~/favicon.ico" />
     <link href="~/css/main.css" type="text/css" rel="stylesheet" />
+
+    <!-- Importerar material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
 </head>
 
 <body>
     <header>
+        <button id="menu-close" aria-label="Stäng meny" title="Stäng meny"><img src="~/cross.svg" class="icon"></button>
+        <button id="menu-open" aria-label="Öppna meny" title="Öppna meny"><img src="~/menu-burger.svg" class="icon"></button>
         <nav id="navbar">
             <div class="nav-and-button">
-                <button id="menu-close">Stäng Meny</button>
                 <ul>
                     <li>
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Start</a>
                     </li>
+                    <!--<li>
+                        <a class="nav-link" asp-controller="Home" asp-action="AddCourse">Lägg till bana</a>
+                    </li>-->
                     <li>
                         <a class="nav-link" asp-controller="Home" asp-action="About">Om sidan</a>
                     </li>
