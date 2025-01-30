@@ -14,10 +14,10 @@ namespace discgolf.Controllers
             var JsonObj = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(jsonStr);
 
 
-
-            if (Request.Cookies["createdCourses"] != null)
+            if (Request.Cookies["created"] != null)
             {
-                var temp = "[" + Request.Cookies["createdCourses"] + "]";
+                var temp = Request.Cookies["created"];
+
 
                 var createdCourses = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(temp);
 
@@ -49,29 +49,7 @@ namespace discgolf.Controllers
             if (ModelState.IsValid)
             {
 
-                /* var createdCourses = "[" + Request.Cookies["createdCourses"] + "]";
-                 int id = 0;
-
-                 if (createdCourses != null)
-                 {
-                     var JsonObj = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(createdCourses);
-                     id = JsonObj!.Count;
-                 }
-
-                 model.Id = id;
-
-                 string jsonStr = JsonConvert.SerializeObject(model);
-                 //TempData["new-course"] = jsonStr;
-                 //TempData["new-course"] = model;
-
-                 // Hämta värde från cookie
-                 //if (Request.Cookies["createdCourses"] == null){
-                 //}
-
-
-                 string courses = jsonStr + "," + createdCourses;*/
-
-                var createdCourses = Request.Cookies["createdCourses"];
+                var createdCourses = Request.Cookies["created"];
                 int id = 0;
 
                 if (!string.IsNullOrEmpty(createdCourses))
@@ -90,7 +68,7 @@ namespace discgolf.Controllers
                     string courses = JsonConvert.SerializeObject(coursesList);
 
                     // Sätta värde i cookie
-                    Response.Cookies.Append("createdCourses", courses, new CookieOptions
+                    Response.Cookies.Append("created", courses, new CookieOptions
                     {
                         Expires = DateTime.Now.AddYears(2),
                         HttpOnly = true,
@@ -115,7 +93,7 @@ namespace discgolf.Controllers
                     string updatedCourses = JsonConvert.SerializeObject(coursesList);
 
                     // Sätta värde i cookie
-                    Response.Cookies.Append("createdCourses", updatedCourses, new CookieOptions
+                    Response.Cookies.Append("created", updatedCourses, new CookieOptions
                     {
                         Expires = DateTime.Now.AddYears(2),
                         HttpOnly = true,
@@ -142,20 +120,7 @@ namespace discgolf.Controllers
 
         public IActionResult Play()
         {
-            /*   var jsonStr = System.IO.File.ReadAllText("dg-courses.json");
-                  var JsonObj = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(jsonStr);
 
-
-
-                  if (Request.Cookies["createdCourses"] != null)
-                  {
-                      var temp = "[" + Request.Cookies["createdCourses"] + "]";
-
-                      var createdCourses = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(temp);
-
-                      ViewBag.CreatedCourses = createdCourses;
-
-                  }*/
 
             return View();
         }
