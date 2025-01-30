@@ -19,7 +19,7 @@ namespace discgolf.Controllers
                 var temp = Request.Cookies["created"];
 
 
-                var createdCourses = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(temp);
+                var createdCourses = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(temp!);
 
                 ViewBag.CreatedCourses = createdCourses;
 
@@ -148,6 +148,30 @@ namespace discgolf.Controllers
             }
 
             return RedirectToAction("AddCourse");
+        }
+
+        public IActionResult RemoveCourse(int index)
+        {
+
+            var createdCourses = Request.Cookies["created"];
+
+            if (!string.IsNullOrEmpty(createdCourses))
+            {
+                // Deserialisera JSON-strängen till en lista av DgCourses-objekt
+                var coursesList = JsonConvert.DeserializeObject<List<DgCourses>>(createdCourses);
+
+                // Ta bort elementet vid det specifika indexet
+                coursesList!.RemoveAt(index);
+
+                // Serialisera listan tillbaka till en JSON-sträng
+                string updatedCourses = JsonConvert.SerializeObject(coursesList);
+
+                // Sätta värde i cookie
+                Response.Cookies.Append("created", updatedCourses);
+
+            }
+
+            return RedirectToAction("Index");
         }
 
     }

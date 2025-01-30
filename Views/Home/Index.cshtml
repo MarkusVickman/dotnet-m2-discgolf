@@ -59,7 +59,7 @@
                 </div>
                 <div class="course-button-div">
                     <button class="flex-button" id="@dgcourse.Id">Spela</button>
-                    <button class="flex-button" id="@dgcourse.Id">Ta Bort</button>
+                    <a class="flex-button" id="@dgcourse.Id" asp-controller="Home"  asp-action="RemoveCourse" asp-route-index="@dgcourse.Id">Ta Bort</a>
                 </div>
 
             </div>
