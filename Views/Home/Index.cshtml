@@ -1,6 +1,21 @@
 @model IEnumerable<discgolf.Models.DgCourses>
+@using Newtonsoft.Json;
+@using discgolf.Models;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 @{
     ViewData["Title"] = "Startsidan";
+
+    if (HttpContextAccessor.HttpContext.Request.Cookies["createdCourses"] != null)
+    {
+       var temp = HttpContextAccessor.HttpContext.Request.Cookies["createdCourses"];
+
+        if (!string.IsNullOrEmpty(temp))
+        {
+           var createdCourses = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(temp);
+        }
+    }
+
 }
 
 <h1>Startsidan</h1>

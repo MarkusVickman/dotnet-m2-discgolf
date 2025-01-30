@@ -28,20 +28,38 @@ namespace discgolf.Controllers
 
         [HttpPost]
         [Route("/AddCourse")]
-        public IActionResult AddCourse(DgCourses model)
+        public IActionResult AddCourse(DgCourses model, int numberOfBaskets)
         {
             //Validera
             if (ModelState.IsValid)
             {
                 string jsonStr = JsonConvert.SerializeObject(model);
-                TempData["new-course"] = jsonStr;
+                //TempData["new-course"] = jsonStr;
+                //TempData["new-course"] = model;
 
+                // Hämta värde från cookie
+                //if (Request.Cookies["createdCourses"] == null){
+                //}
+                var createdCourses = Request.Cookies["createdCourses"];
+
+                string courses = createdCourses + jsonStr;
+
+                // Sätta värde i cookie
+                Response.Cookies.Append("createdCourses", courses, new CookieOptions
+                {
+                    Expires = DateTime.Now.AddYears(2),
+                    HttpOnly = true,
+                    Secure = true
+                });
 
                 return RedirectToAction("Index");
 
             }
             else
             {
+
+                ViewBag.NumberOfBaskets = numberOfBaskets;
+
                 ViewData["ErrorMessage"] = "Valideringen misslyckades. Kontrollera dina inmatningar.";
                 return View();
 

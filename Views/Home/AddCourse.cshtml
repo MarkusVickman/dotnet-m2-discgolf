@@ -1,7 +1,9 @@
 @model discgolf.Models.DgCourses
 @{
     ViewData["Title"] = "Lägg till bana";
-    int numberOfBaskets = ViewBag.NumberOfBaskets;
+
+        int numberOfBaskets = ViewBag.NumberOfBaskets;
+    
 }
 
 <div class="form">
@@ -16,7 +18,11 @@
         {
             int j = i + 1;
             <input asp-for="Basket[i]" placeholder="Par för hål @j" />
-        }        
+        }
+
+        <!-- Dold fält för att skicka med en extra int-variabel -->
+        <input type="hidden" name="numberOfBaskets" value="@numberOfBaskets" />
+
         <input type="submit" value="Lägg till bana" class="submit-button">
 
         @if (ViewData["ErrorMessage"] != null)
