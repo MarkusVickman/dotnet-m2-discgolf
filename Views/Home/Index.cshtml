@@ -1,19 +1,15 @@
 @model IEnumerable<discgolf.Models.DgCourses>
-@using Newtonsoft.Json;
 @using discgolf.Models;
-@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Startsidan";
 
-    if (HttpContextAccessor.HttpContext.Request.Cookies["createdCourses"] != null)
-    {
-       var temp = HttpContextAccessor.HttpContext.Request.Cookies["createdCourses"];
+    // Deklarera variabeln createdCourses
+    IEnumerable<DgCourses> createdCourses = Enumerable.Empty<DgCourses>();
 
-        if (!string.IsNullOrEmpty(temp))
-        {
-           var createdCourses = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(temp);
-        }
+    if (ViewBag.CreatedCourses != null)
+    {
+        createdCourses = (IEnumerable<DgCourses>)ViewBag.CreatedCourses;
     }
 
 }
@@ -37,13 +33,47 @@
 </div>
 
 <div>
+    <!-- kontrollerar createdCourses innehåller något objekt.-->
+    @if (createdCourses.Any())
+    {
+        <h2 class="text-center">Egenskapade banor</h2>
+        @foreach (var dgcourse in createdCourses)
+        {
 
+            <div id="@dgcourse.Id" class="course-div">
+
+
+                <h3>@dgcourse.CourseName</h3>
+
+                <div class="flex">
+                    <p class="basket">Hål</p> @for (var i = 1; i <= dgcourse.Basket.Length; i++)
+                    {
+                        <p class="basket">@i</p>
+                    }
+                </div>
+                <div class="flex">
+                    <p class="basket">Par @for (var i = 1; i <= dgcourse.Basket.Length; i++)
+                        {
+                        <p class="basket">@dgcourse.Basket[i - 1]</p>
+                        }
+                </div>
+                <div class="course-button-div">
+                    <button class="flex-button" id="@dgcourse.Id">Spela</button>
+                    <button class="flex-button" id="@dgcourse.Id">Ta Bort</button>
+                </div>
+
+            </div>
+        }
+    }
+
+    <h2 class="text-center">Kända banor</h2>
     @foreach (var dgcourse in Model)
     {
+        
         <div id="@dgcourse.Id" class="course-div">
 
 
-            <h2>@dgcourse.CourseName</h2>
+            <h3>@dgcourse.CourseName</h3>
 
             <div class="flex">
                 <p class="basket">Hål</p> @for (var i = 1; i <= dgcourse.Basket.Length; i++)
@@ -56,6 +86,9 @@
                     {
                     <p class="basket">@dgcourse.Basket[i - 1]</p>
                     }
+            </div>
+            <div class="course-button-div">
+                <button class="flex-button" id="@dgcourse.Id">Spela</button>
             </div>
 
         </div>

@@ -12,6 +12,21 @@ namespace discgolf.Controllers
         {
             var jsonStr = System.IO.File.ReadAllText("dg-courses.json");
             var JsonObj = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(jsonStr);
+
+
+
+            if (Request.Cookies["createdCourses"] != null)
+            {
+                var temp = "[" + Request.Cookies["createdCourses"] + "]";
+
+                var createdCourses = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(temp);
+
+                ViewBag.CreatedCourses = createdCourses;
+
+            }
+
+
+
             return View(JsonObj);
         }
 
@@ -42,7 +57,7 @@ namespace discgolf.Controllers
                 //}
                 var createdCourses = Request.Cookies["createdCourses"];
 
-                string courses = createdCourses + jsonStr;
+                string courses = jsonStr + "," + createdCourses;
 
                 // Sätta värde i cookie
                 Response.Cookies.Append("createdCourses", courses, new CookieOptions
@@ -51,6 +66,13 @@ namespace discgolf.Controllers
                     HttpOnly = true,
                     Secure = true
                 });
+
+                /*  Response.Cookies.Append("createdCourses", "", new CookieOptions
+                  {
+                      Expires = DateTime.Now.AddDays(-1),
+                      HttpOnly = true,
+                      Secure = true
+                  });*/
 
                 return RedirectToAction("Index");
 
@@ -69,6 +91,20 @@ namespace discgolf.Controllers
 
         public IActionResult Play()
         {
+            /*   var jsonStr = System.IO.File.ReadAllText("dg-courses.json");
+                  var JsonObj = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(jsonStr);
+
+
+
+                  if (Request.Cookies["createdCourses"] != null)
+                  {
+                      var temp = "[" + Request.Cookies["createdCourses"] + "]";
+
+                      var createdCourses = JsonConvert.DeserializeObject<IEnumerable<DgCourses>>(temp);
+
+                      ViewBag.CreatedCourses = createdCourses;
+
+                  }*/
 
             return View();
         }

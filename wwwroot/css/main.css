@@ -77,6 +77,15 @@ button {
     max-width: 100%;
 }
 
+.course-button-div {    
+    display: flex;
+}
+
+.flex-button{
+width: 100%;
+padding: 10px 0 10px 0;
+}
+
 .flex {
     border-width: 1px;
     border-style: solid;
@@ -88,7 +97,11 @@ button {
     width: 100%;
 }
 
-.course-div h2 {
+.text-center {
+    text-align: center;
+}
+
+.course-div h2, .course-div h3 {
     background-color: grey;
     padding: 15px;
     margin: 0;
