@@ -11,13 +11,14 @@
         createdCourses = (IEnumerable<DgCourses>)ViewBag.CreatedCourses;
     }
 
-    int index = 0;
-
 }
 
 
 <div>
-    <h1 class="text-center">Mina rundor</h1>
+
+    <div class="center-spalt">
+        <h1>Mina rundor</h1>
+    </div>
 
     @if (TempData["ErrorMessage"] != null)
     {
@@ -53,7 +54,7 @@
                         }
                 </div>
                 <div class="course-button-div">
-                    <a class="flex-button" asp-controller="Home" asp-action="RemovePlayedCourse"
+                    <a class="flex-button deleteBtn" asp-controller="Home" asp-action="RemovePlayedCourse"
                         asp-route-id="@dgcourse.index">Ta
                         Bort</a>
                 </div>

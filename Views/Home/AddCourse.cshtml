@@ -17,7 +17,7 @@
         @for (int i = 0; i < numberOfBaskets; i++)
         {
             int j = i + 1;
-            <input asp-for="Basket[i]" placeholder="Par för hål @j" />
+            <input asp-for="Basket[i]" placeholder="Par för hål @j"  min="2" max="7" value="3" />
         }
 
         <!-- Dold fält för att skicka med en extra int-variabel -->
@@ -31,5 +31,7 @@
                 @ViewData["ErrorMessage"]
             </div>
         }
+
+        <div asp-validation-summary="All"></div>
     </form>
 </div>

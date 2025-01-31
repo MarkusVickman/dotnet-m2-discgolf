@@ -14,13 +14,16 @@
 
 }
 
-<h1>Startsidan</h1>
-<p>Detta är lite </p>
+<div class="center-spalt">
+    <h1>Spela Discgolf</h1>
+    <p>Denna sida låter dig lägga till dina banor som du ochså kan spela.</p>
+</div>
+
 <div class="form">
     <form method="post">
         <h2>Lägg till bana</h2>
         <label for="numberOf">Antal korgar på banan</label>
-        <input type="number" id="numberOf" name="numberOf">
+        <input type="number" min="1" max="27" id="numberOf" name="numberOf">
         <button type="submit" value="submit" class="submit-button">Skapa mall</button>
 
         @if (TempData["ErrorMessage"] != null)
@@ -32,7 +35,7 @@
     </form>
 </div>
 
-<div>
+<div class="big-div-courses">
     <!-- kontrollerar createdCourses innehåller något objekt.-->
     @if (createdCourses.Any())
     {
@@ -41,8 +44,8 @@
         @foreach (var dgcourse in createdCourses.Select((value, index) => new { value, index }))
         {
 
-       // @foreach (var dgcourse in createdCourses)
-        //{
+            // @foreach (var dgcourse in createdCourses)
+            //{
 
             <div class="course-div">
 
@@ -62,9 +65,10 @@
                         }
                 </div>
                 <div class="course-button-div">
-                    <a class="flex-button" asp-controller="Home" asp-action="Play" asp-route-id="@dgcourse.index"
+                    <a class="flex-button addBtn" asp-controller="Home" asp-action="Play" asp-route-id="@dgcourse.index"
                         asp-route-created="true">Spela</a>
-                    <a class="flex-button" asp-controller="Home" asp-action="RemoveCourse" asp-route-id="@dgcourse.index">Ta
+                    <a class="flex-button deleteBtn" asp-controller="Home" asp-action="RemoveCourse"
+                        asp-route-id="@dgcourse.index">Ta
                         Bort</a>
                 </div>
 
@@ -73,6 +77,9 @@
 
         }
     }
+
+</div>
+<div class="big-div-courses">
 
     <h2 class="text-center">Kända banor</h2>
     @foreach (var dgcourse in Model)

@@ -26,7 +26,7 @@ namespace discgolf.Controllers
             }
 
 
-
+            //parameterpassning med model DgCourses
             return View(jsonObj);
         }
 

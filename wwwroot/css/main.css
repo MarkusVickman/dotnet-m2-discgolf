@@ -20,7 +20,7 @@ nav ul {
     position: absolute;
     display: flex;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px;
     width: 100%;
 }
 
@@ -49,7 +49,7 @@ nav a:hover,
 #header-icon:hover,
 #menu-button:hover,
 #close-menu-button:hover {
-    background-color: rgb(49, 49, 49);
+    background-color: rgb(238, 238, 238);
 
 }
 
@@ -71,34 +71,47 @@ button {
 .course-div {
     width: 1000px;
     height: auto;
-    background-color: cadetblue;
+    background-color: rgb(238, 238, 238);
     margin: auto;
     margin-top: 20px;
     max-width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px;
 }
 
-.course-button-div {    
+.course-button-div {
     display: flex;
 }
 
-.flex-button{
-width: 100%;
-padding: 10px 0 10px 0;
-padding: 5px;
-border-style: none;
-box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px;
-background-color: rgb(0, 136, 255);
-text-decoration: none;
-color: black;
+.big-div-courses {
+    margin: 60px auto 60px auto;
+}
+
+.flex-button {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    padding: 5px;
+    border-style: none;
+
+    text-decoration: none;
+    color: black;
+}
+
+.deleteBtn {
+    background-color: rgb(255, 147, 147);
+}
+
+.addBtn, .course-button-div {
+    background-color: rgb(172, 216, 255);
 }
 
 .flex-button:hover {
-    background-color: rgb(104, 185, 255);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 4px;
 }
 
 .flex {
     border-width: 1px;
     border-style: solid;
+    border-color: rgb(202, 202, 202);
     display: flex;
 }
 
@@ -111,8 +124,16 @@ color: black;
     text-align: center;
 }
 
-.course-div h2, .course-div h3 {
-    background-color: grey;
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+.course-div h2,
+.course-div h3 {
+    background-color: rgb(212, 212, 212);
     padding: 15px;
     margin: 0;
 }
@@ -126,11 +147,18 @@ color: black;
     width: 20px;
 }
 
-.form {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 500px;
+.center-spalt {
+    text-align: center;
+    width: 1000px;
     max-width: 100%;
     margin: auto;
+}
+
+.form {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
+    width: 500px;
+    max-width: 100%;
+    margin: 50px auto 50px auto;
     padding: 20px;
 }
 
@@ -167,4 +195,6 @@ color: black;
 .error-message {
     width: 100%;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
