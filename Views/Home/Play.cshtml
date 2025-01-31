@@ -1,6 +1,53 @@
+@using discgolf.Models;
+@model discgolf.Models.DgCourses
+
 @{
     ViewData["Title"] = "Spela";
+
+
+    DgCourses course = ViewBag.Course;
+
 }
 
 <h1>Spela</h1>
 <p>Detta är lite information om sidan.</p>
+
+@if (course != null)
+{
+
+
+    <div class="form">
+        <form method="post">
+            <h1>Lägg till bana</h1>
+
+
+            <h3>@course.CourseName</h3>
+
+            <!-- Dold fält för att skicka med en extra int-variabel -->
+            <input type="hidden" asp-for="CourseName" value="@course.CourseName" />
+
+            <label asp-for="Basket"></label>
+            @for (int i = 0; i < course.Basket.Length; i++)
+            {
+                int j = i + 1;
+                int k = i + 2;
+                <div class="hidden" id="basket-@i">
+                    <input asp-for="Basket[i]" placeholder="Hål @j" />
+                </div>
+                @if (j == course.Basket.Length)
+                {
+                    <input type="submit" value="Spara runda" class="submit-button">
+                }
+            }
+
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <div class="error-message">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+        </form>
+    </div>
+
+
+}

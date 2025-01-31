@@ -37,40 +37,50 @@
     @if (createdCourses.Any())
     {
         <h2 class="text-center">Egenskapade banor</h2>
-        @foreach (var dgcourse in createdCourses)
+
+        @foreach (var dgcourse in createdCourses.Select((value, index) => new { value, index }))
         {
 
-            <div id="@dgcourse.Id" class="course-div">
+       // @foreach (var dgcourse in createdCourses)
+        //{
+
+            <div class="course-div">
 
 
-                <h3>@dgcourse.CourseName</h3>
+                <h3>@dgcourse.value.CourseName</h3>
 
                 <div class="flex">
-                    <p class="basket">Hål</p> @for (var i = 1; i <= dgcourse.Basket.Length; i++)
+                    <p class="basket">Hål</p> @for (var i = 1; i <= dgcourse.value.Basket.Length; i++)
                     {
                         <p class="basket">@i</p>
                     }
                 </div>
                 <div class="flex">
-                    <p class="basket">Par @for (var i = 1; i <= dgcourse.Basket.Length; i++)
+                    <p class="basket">Par @for (var i = 1; i <= dgcourse.value.Basket.Length; i++)
                         {
-                        <p class="basket">@dgcourse.Basket[i - 1]</p>
+                        <p class="basket">@dgcourse.value.Basket[i - 1]</p>
                         }
                 </div>
                 <div class="course-button-div">
-                    <button class="flex-button" id="@dgcourse.Id">Spela</button>
-                    <a class="flex-button" id="@dgcourse.Id" asp-controller="Home"  asp-action="RemoveCourse" asp-route-index="@dgcourse.Id">Ta Bort</a>
+                    <a class="flex-button" asp-controller="Home" asp-action="Play" asp-route-id="@dgcourse.index"
+                        asp-route-created="true">Spela</a>
+                    <a class="flex-button" asp-controller="Home" asp-action="RemoveCourse" asp-route-id="@dgcourse.index">Ta
+                        Bort</a>
                 </div>
 
             </div>
+
+
         }
     }
 
     <h2 class="text-center">Kända banor</h2>
     @foreach (var dgcourse in Model)
     {
-        
-        <div id="@dgcourse.Id" class="course-div">
+
+
+
+        <div class="course-div">
 
 
             <h3>@dgcourse.CourseName</h3>
@@ -88,10 +98,13 @@
                     }
             </div>
             <div class="course-button-div">
-                <button class="flex-button" id="@dgcourse.Id">Spela</button>
+                <a class="flex-button" asp-controller="Home" asp-action="Play" asp-route-id="@dgcourse.Id"
+                    asp-route-created="false">Spela</a>
             </div>
 
         </div>
+
+
     }
 
 </div>
