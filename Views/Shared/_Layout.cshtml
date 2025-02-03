@@ -14,9 +14,12 @@
 </head>
 
 <body>
+
+    <!-- enhel header med lite länkar  -->
     <header>
-        <button id="menu-close" aria-label="Stäng meny" title="Stäng meny"><img src="~/cross.svg" class="icon"></button>
-        <button id="menu-open" aria-label="Öppna meny" title="Öppna meny"><img src="~/menu-burger.svg" class="icon"></button>
+        <!-- <button id="menu-close" aria-label="Stäng meny" title="Stäng meny"><img src="~/cross.svg" class="icon"></button>
+        <button id="menu-open" aria-label="Öppna meny" title="Öppna meny"><img src="~/menu-burger.svg"
+                class="icon"></button>-->
         <nav id="navbar">
             <div class="nav-and-button">
                 <ul>
@@ -27,14 +30,18 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Rounds">Mina Rundor</a>
                     </li>
                     <li>
+                        <a class="nav-link" asp-controller="Home" asp-action="Profile">Profil</a>
+                    </li>
+                    <li>
                         <a class="nav-link" asp-controller="Home" asp-action="About">Om sidan</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main />
-    @RenderBody()
+    <main>
+        <!-- läser index vyer -->
+        @RenderBody()
     </main>
 </body>
 

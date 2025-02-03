@@ -1,0 +1,18 @@
+
+<!-- Partial som visar profil. Den behöver bara få in ett profilobjekt till model -->
+<div class="big-div-courses">
+    @if (Model != null)
+    {
+        <div class="course-div">
+            <h2>@Model.Name</h2>
+            <ul>
+                <li><b>PDGA:</b> #@Model.Pdga</li>
+                <li><b>Telefon nr:</b> @Model.Phonenr</li>
+                <li><b>Email:</b> @Model.Email</li>
+            </ul>
+            <div class="profile-img">
+                <img src="@Model.Url" width="400" alt="profilbild">
+            </div>
+        </div>
+    }
+</div>

@@ -4,28 +4,23 @@
 @{
     ViewData["Title"] = "Spela";
 
-
+    /* deklarerar en bana från ett viewbag objekt */
     DgCourses course = ViewBag.Course;
-
 }
 
 
-
+<!-- detta formulär är för att spela en runda  -->
 @if (course != null)
 {
-
-
     <div class="form">
         <form method="post">
             <h1>Lägg till bana</h1>
-
-
             <h3>@course.CourseName</h3>
 
-            <!-- Dold fält för att skicka med en extra int-variabel -->
+            <!-- Dold fält för att skicka med bannamn -->
             <input type="hidden" asp-for="CourseName" value="@course.CourseName" />
 
-            @*<label asp-for="Basket"></label>*@
+            <!-- skapar ett inputfält för varje korg.  -->
             @for (int i = 0; i < course.Basket.Length; i++)
             {
                 int j = i + 1;
@@ -48,6 +43,4 @@
             }
         </form>
     </div>
-
-
 }

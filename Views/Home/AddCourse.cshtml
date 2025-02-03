@@ -2,10 +2,12 @@
 @{
     ViewData["Title"] = "Lägg till bana";
 
-        int numberOfBaskets = ViewBag.NumberOfBaskets;
-    
+    /* antal korgar läses in och formuläret skapas dynamiskt då banor kan innehålla olika många korgar */
+    int numberOfBaskets = ViewBag.NumberOfBaskets;
+
 }
 
+<!-- formulär som läser input ny bana enligt dgcourses model. index används för basket som är en int-array för att tar index många värden.  -->
 <div class="form">
     <form method="post">
         <h1>Lägg till bana</h1>
@@ -17,7 +19,7 @@
         @for (int i = 0; i < numberOfBaskets; i++)
         {
             int j = i + 1;
-            <input asp-for="Basket[i]" placeholder="Par för hål @j"  min="2" max="7" value="3" />
+            <input asp-for="Basket[i]" placeholder="Par för hål @j" min="2" max="7" value="3" />
         }
 
         <!-- Dold fält för att skicka med en extra int-variabel -->

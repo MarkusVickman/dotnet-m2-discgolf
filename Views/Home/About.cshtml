@@ -1,9 +1,33 @@
+@using discgolf.Models
+@model discgolf.Models.ProfileModel
+
 @{
-    ViewData["Title"] = "Om oss";
+    ViewData["Title"] = "Om sidan";
+
+    /*profil tas emot i ett viewbag objekt för att skrivas ut i partial*/
+    ProfileModel profile = ViewBag.Profile;
 }
 
 
 <div class="center-spalt">
-    <h1>Om oss</h1>
-    <p>Detta är lite information om sidan.</p>
+    <h1>Om sidan</h1>
+    <p>Denna webbplats är skapad id ASP.NET Core och har implementerats med modeller, vyer och controllers (MVC).</p>
+    <p>Webbplatsen använder modeller för att skapad och validera objekt samt för att skapad och validera formulär.</p>
+    <p>I Controllern skapades många routes som leder till vyer eller dirigerar om. I Controllern finns även logic för
+        att ändra i data samt lagra I cookies.</p>
+    <p>Många olika views finns i form av sidor men även som partials där ex. profilsidan visas som en partial på både
+        profilsidan och denna sida.</p>
+</div>
+
+<div class="center-spalt">
+    <h2>Funktioner</h2>
+    <p>Webbplatsen kan lagra discgolf-banor och spelade rundor som cookies. Dessa går även att ta bort. Det går även att
+        skapa en egen profil.</p>
+</div>
+
+<div class="center-spalt">
+    <h2>Om dig</h2>
+
+    <!-- parial för att visas profil -->
+    <partial name="_ProfilePartial" model="profile" />
 </div>
