@@ -1,0 +1,76 @@
+@using discgolf.Models;
+
+@{
+    ViewData["Title"] = "Spelade rundor";
+
+    // Deklarera variabeln createdCourses
+    IEnumerable<DgCourses> createdCourses = Enumerable.Empty<DgCourses>();
+
+    // ger värde till variablen
+    if (ViewBag.CreatedCourses != null)
+    {
+        createdCourses = (IEnumerable<DgCourses>)ViewBag.CreatedCourses;
+    }
+
+    //Används för att styra css-klasser
+    string divClass = "";
+    string flexClass = "";
+}
+
+
+<div>
+    <div class="center-spalt">
+        <h1>Mina rundor</h1>
+    </div>
+
+    <!-- om inga spelade rundor finns skrivs ett meddelande ut  -->
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="error-message">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (createdCourses.Any())
+    {
+
+        <!-- skriver ut Discgolfbanor från viewbag och både value och index används för att skunna skickas med deleteBtn id spela och Ta bort-knapparna -->
+        @foreach (var dgcourse in createdCourses.Select((value, index) => new { value, index }))
+        {
+
+            <!-- för att välja styling beroende på hur många korgar banan innehåller används en if och klasser kan bestämmas  -->
+            @if (@dgcourse.value.Basket.Length >= 14)
+            {
+
+                divClass = "course-div overflow-scroll";
+                flexClass = "flex min-width";
+            }
+            else
+            {
+                divClass = "course-div";
+                flexClass = "flex";
+            }
+
+            <div class="@divClass">
+                <h3>@dgcourse.value.CourseName</h3>
+                <div class="@flexClass">
+                    <p class="basket">Hål</p> @for (var i = 1; i <= dgcourse.value.Basket.Length; i++)
+                    {
+                        <p class="basket">@i</p>
+                    }
+                </div>
+                <div class="@flexClass">
+                    <p class="basket">Par @for (var i = 1; i <= dgcourse.value.Basket.Length; i++)
+                        {
+                        <p class="basket">@dgcourse.value.Basket[i - 1]</p>
+                        }
+                </div>
+                <div class="course-button-div">
+                    <a class="flex-button deleteBtn" asp-controller="Home" asp-action="RemovePlayedCourse"
+                        asp-route-id="@dgcourse.index">Ta
+                        Bort</a>
+                </div>
+            </div>
+        }
+    }
+</div>

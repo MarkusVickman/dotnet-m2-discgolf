@@ -1,0 +1,47 @@
+@using discgolf.Models
+@model discgolf.Models.ProfileModel
+
+@{
+    ViewData["Title"] = "Profil";
+
+    /*profil tas emot i ett viewbag objekt för att skrivas ut i partial*/
+    ProfileModel profile = ViewBag.Profile;
+}
+
+<h1>Profil</h1>
+
+<!-- parial för att visas profil -->
+<partial name="_ProfilePartial" model="profile" />
+
+<!-- formulär som tar input profil enligt modellen profilemodel -->
+<div class="form">
+    <form method="post">
+        <h2>Skapa/Ändra profil</h2>
+
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+
+        <label asp-for="Pdga"></label>
+        <input asp-for="Pdga" />
+
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+
+        <label asp-for="Url"></label>
+        <input asp-for="Url" />
+
+        <label asp-for="Phonenr"></label>
+        <input asp-for="Phonenr" />
+
+        <input type="submit" value="Profil" class="submit-button">
+
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="error-message">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+
+        <div asp-validation-summary="All"></div>
+    </form>
+</div>

@@ -1,0 +1,46 @@
+@using discgolf.Models;
+@model discgolf.Models.DgCourses
+
+@{
+    ViewData["Title"] = "Spela";
+
+    /* deklarerar en bana från ett viewbag objekt */
+    DgCourses course = ViewBag.Course;
+}
+
+
+<!-- detta formulär är för att spela en runda  -->
+@if (course != null)
+{
+    <div class="form">
+        <form method="post">
+            <h1>Spela runda</h1>
+            <h3>@course.CourseName</h3>
+
+            <!-- Dold fält för att skicka med bannamn -->
+            <input type="hidden" asp-for="CourseName" value="@course.CourseName" />
+
+            <!-- skapar ett inputfält för varje korg.  -->
+            @for (int i = 0; i < course.Basket.Length; i++)
+            {
+                int j = i + 1;
+                int k = i + 2;
+                <div class="hidden" id="basket-@i">
+                    <label>Hål @j</label>
+                    <input asp-for="Basket[i]" placeholder="Hål @j" min="1" max="27" value="3" />
+                </div>
+                @if (j == course.Basket.Length)
+                {
+                    <input type="submit" value="Spara runda" class="submit-button">
+                }
+            }
+
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <div class="error-message">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+        </form>
+    </div>
+}

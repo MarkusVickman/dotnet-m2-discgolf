@@ -1,0 +1,68 @@
+[
+    {
+        "Id": 1,
+        "CourseName": "Maple Hill",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 2,
+        "CourseName": "Blue Ribbon Pines",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 3,
+        "CourseName": "Idlewild",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 4,
+        "CourseName": "Milo McIver",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 5,
+        "CourseName": "DeLaveaga",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 6,
+        "CourseName": "Hornets Nest",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 7,
+        "CourseName": "Fountain Hills",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 8,
+        "CourseName": "Jonesboro",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 9,
+        "CourseName": "Sticksjö",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 10,
+        "CourseName": "Härnösand",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 11,
+        "CourseName": "Bispgården",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 12,
+        "CourseName": "Husum",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    },
+    {
+        "Id": 13,
+        "CourseName": "Fagervik",
+        "Basket": [3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 4]
+    }
+
+]
