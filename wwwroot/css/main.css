@@ -80,7 +80,7 @@ button {
 }
 
 .overflow-scroll {
-    overflow: scroll;
+    overflow:visible;
 }
 
 /* styling av div för banor */
@@ -247,4 +247,12 @@ h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+@media screen and (max-width: 499px) {
+
+    
+.overflow-scroll {
+    overflow: scroll;
+}
 }
